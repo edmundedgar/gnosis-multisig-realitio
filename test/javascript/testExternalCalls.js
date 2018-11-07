@@ -91,6 +91,7 @@ contract('MultiSigWallet', (accounts) => {
     it('callReceive1uint', async() => {
          // Encode call for the multisig
         const receive1uintEncoded = callsInstance.contract.receive1uint.getData(12345)
+        const receive1uintEncoded2r = callsInstance.receive1uint.request(12345);
         const transactionId = utils.getParamFromTxEvent(
             await multisigInstance.submitTransaction(callsInstance.address, 67890, receive1uintEncoded, {from: accounts[0]}),
             'transactionId', null, 'Submission')
